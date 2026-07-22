@@ -1,7 +1,7 @@
 # Dubai Smart Parking ETL Pipeline
 
 **Course:** Data Engineering  
-**Team:** · O'kah Ahone Ebwekoh (80770239) · Muhammad Sharjeel Zahid (99871705) · Tharun Kumar Reddy (74937166)
+**Author:** · O'kah Ahone Ebwekoh
 
 ---
 
