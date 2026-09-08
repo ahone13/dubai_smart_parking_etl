@@ -17,38 +17,41 @@ This project builds an ETL pipeline that integrates two fragmented urban mobilit
 
 ## Folder Structure
 
-```
-Final_Project_Submission/
-├── Final_Report.docx
-├── data/
-│   ├── raw/
-│   │   ├── IIoT_Smart_Parking_Management.csv
-│   │   └── number_of_parking_spaces_per_zone.csv
-│   └── processed/
-├── notebooks/
-│   └── main_pipeline.ipynb
-├── scripts/
-│   ├── etl_pipeline.py
-│   └── db_schema.sql
-├── diagrams/
-│   ├── architecture.png
-│   └── erd_model.png
+```text
+dubai_smart_parking_etl/
 ├── dashboards/
 │   └── dashboard.py
+├── diagrams/
+│   ├── E-R diagram.png
+│   └── architecture diagram.png
 ├── documentation/
 │   └── README.md
-└── references/
-    └── citation_list.bib
+├── notebooks/
+│   └── main_pipeline.ipynb
+├── references/
+│   └── citation_list.bib
+├── screenshots/
+│   └── screenshot 1.png
+├── scripts/
+│   ├── db_schema.sql
+│   ├── etl_pipeline.py
+│   └── export_processed.py
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
 ## Datasets
 
+The pipeline integrates two datasets:
+
 | Dataset | Source | Rows | Description |
-|---|---|---|---|
-| Dubai Pulse / RTA | [data.dubai.gov.ae](https://data.dubai.gov.ae) | 84 | Zone-level parking capacity for Dubai communities |
-| IIoT Smart Parking | [Kaggle](https://www.kaggle.com/datasets/datasetengineer/smart-parking-management-dataset) | 1,000 | Sensor-based occupancy events with timestamps |
+|---|---|---:|---|
+| Dubai Pulse / RTA | [Dubai Open Data](https://data.dubai.gov.ae) | 84 | Zone-level parking capacity for Dubai communities |
+| IIoT Smart Parking | [Kaggle](https://www.kaggle.com/datasets/datasetengineer/smart-parking-management-dataset) | 1,000 | Sensor-based parking occupancy events with timestamps |
+
+The source datasets are not included in this repository. Download them from their respective sources and place them in the local `data/raw/` directory before running the ETL pipeline.
 
 ---
 
@@ -65,28 +68,30 @@ Final_Project_Submission/
 pip install pandas sqlalchemy psycopg2-binary streamlit plotly
 ```
 
-### 3. Place data files
+### 3. Prepare the data
 
-Put both CSV files in the same folder as `etl_pipeline.py`:
-```
-data_engineering_csv/
-├── etl_pipeline.py
-├── dashboard.py
+Download the two source datasets from the links above and place them in:
+
+```text
+data/raw/
 ├── IIoT_Smart_Parking_Management.csv
 └── number_of_parking_spaces_per_zone_2026-05-21_02-02-07_1.csv
 ```
 
 ### 4. Configure database credentials
 
-Open `etl_pipeline.py` and update:
-```python
-DB_PASSWORD = "your_password"
-```
+Configure your PostgreSQL connection using your local environment variables.
+The required variables are : 
+DB_HOST
+DB_PORT
+DB_NAME
+DB_USER
+DB_PASSWORD
 
 ### 5. Run the ETL pipeline
 
 ```bash
-python etl_pipeline.py
+python scripts/etl_pipeline.py
 ```
 
 Expected output:
@@ -112,10 +117,10 @@ ETL pipeline complete!
 ### 6. Launch the dashboard
 
 ```bash
-streamlit run dashboard.py
+streamlit run dashboards/dashboard.py
 ```
 
-Opens at `http://localhost:8501`
+The dashboard opens at `http://localhost:8501`
 
 ---
 
