@@ -21,6 +21,9 @@ This project builds an ETL pipeline that integrates two fragmented urban mobilit
 dubai_smart_parking_etl/
 ├── dashboards/
 │   └── dashboard.py
+├── data/
+│   ├── raw/                 # Local source datasets — not tracked
+│   └── processed/           # Local ETL outputs — not tracked
 ├── diagrams/
 │   ├── E-R diagram.png
 │   └── architecture diagram.png
